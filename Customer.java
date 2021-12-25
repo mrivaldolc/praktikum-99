@@ -10,11 +10,13 @@
  */
 public class Customer {
 
-    private String firstName, lastName, account;
+    private String firstName;
+    private String lastName;
+    private Account account;
 
-    public Customer(String f, String l) {
-        this.firstName = f;
-        this.lastName = l;
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
@@ -25,11 +27,15 @@ public class Customer {
         return lastName;
     }
 
-    public String getAccount() {
+    public Account getAccount() {
         return account;
     }
+    
+    public String getFullName(){
+        return firstName+" "+lastName;
+    }
 
-    public void setAccount(String account) {
+    public void setAccount(Account account) {
         this.account = account;
     }
 }

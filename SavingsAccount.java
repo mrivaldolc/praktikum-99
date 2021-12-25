@@ -9,14 +9,14 @@
  * @author Muhammad Rivaldo
  */
 public class SavingsAccount extends Account{
-    double interestRate;
-    public SavingsAccount(double init_balance, double interestRate) {
-        super(init_balance);
+    private double interestRate;
+    public SavingsAccount(double initBalance, double interestRate) {
+        super(initBalance);
         this.interestRate = interestRate;
     }
-    public SavingsAccount(double init_balance){
-        super(init_balance);
-        this.balance = init_balance;
+    public SavingsAccount(double initBalance){
+        super(initBalance);
+        this.balance = initBalance;
     }
 
 }

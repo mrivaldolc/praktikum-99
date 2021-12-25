@@ -3,30 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Muhammad Rivaldo
  */
-public class CheckingAccount extends Account{
-    double overdraftProtection;
-    public CheckingAccount(double init_balance, double overdraftProtection) {
-        super(init_balance);
+public class CheckingAccount extends Account {
+
+    private double overdraftProtection;
+
+    public CheckingAccount(double initBalance, double overdraftProtection) {
+        super(initBalance);
         this.overdraftProtection = overdraftProtection;
     }
-    public boolean penarikan(double amount) {
 
-        super.penarikan(amount);
-        if (balance < 0) {
-            if (overdraftProtection >= (balance - amount)) {
-                balance -= (balance - amount);
-                return true;
+    public boolean penarikan(double amount) {
+        if (balance > 0) {
+            if (balance > amount || balance == amount) {
+                super.penarikan(amount);
             } else {
-                System.out.println("Insufficient funds");
-                return false;
+                if (overdraftProtection > 0) {
+                    double overdraft = balance - amount;
+                    if (overdraftProtection > Math.abs(overdraft) || overdraftProtection == Math.abs(overdraft)) {
+                        overdraftProtection = overdraftProtection + overdraft;    
+                        balance =  balance - amount;
+                        System.out.println("Message : Used overdraft protection : Rp."+overdraft);
+                        System.out.println("Message : overdraft protection balance : "+overdraftProtection);
+                        return true;
+                    } else {
+                        System.out.println("Message : Insufficient Overdraft Protection");
+                        System.out.println("Message : overdraft protection balance : "+overdraftProtection);
+                        return false;
+                    }
+                }
             }
-        } else {
-            return false;
         }
+
+        return false;
     }
 }
