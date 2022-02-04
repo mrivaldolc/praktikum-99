@@ -1,3 +1,5 @@
+package com.mycompany.test;
+
 import java.util.*;
 
 /*
